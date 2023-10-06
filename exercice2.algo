@@ -1,0 +1,26 @@
+ALGORITHME SommeElementsDistincts(ensemble1, ensemble2)
+    somme <- 0
+    elements_uniques <- tableau vide
+
+    POUR chaque élément DANS ensemble1 FAIRE
+        SI élément N'EST PAS DANS elements_uniques ALORS
+            somme <- somme + élément
+            AJOUTER élément À elements_uniques
+        FIN SI
+    FIN POUR
+
+    POUR chaque élément DANS ensemble2 FAIRE
+        SI élément N'EST PAS DANS elements_uniques ALORS
+            somme <- somme + élément
+            AJOUTER élément À elements_uniques
+        FIN SI
+    FIN POUR
+
+    RETOURNER somme
+FIN ALGORITHME
+
+// Exemple d'utilisation
+ensemble1 <- [3, 1, 7, 9]
+ensemble2 <- [2, 4, 1, 9, 3]
+résultat <- SommeElementsDistincts(ensemble1, ensemble2)
+AFFICHER résultat  // Sortie : 13

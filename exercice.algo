@@ -1,0 +1,25 @@
+Déclarer phrase comme chaîne de caractères
+Déclarer longueur_phrase comme entier
+Déclarer nombre_mots comme entier
+Déclarer nombre_voyelles comme entier
+
+Initialiser longueur_phrase à 0
+Initialiser nombre_mots à 0
+Initialiser nombre_voyelles à 0
+
+Pour chaque caractère (caractere) dans phrase :
+    Incrémenter longueur_phrase de 1  # Incrémente le compteur de caractères
+    
+    Si caractere est un espace (' ') :
+        Incrémenter nombre_mots de 1  # Incrémente le compteur de mots
+    Sinon si caractere est une voyelle (en minuscules, y compris les accents) :
+        Incrémenter nombre_voyelles de 1  # Incrémente le compteur de voyelles
+
+# Comme le dernier caractère est un point, il n'est pas compté dans le nombre de mots,
+# donc nous devons incrémenter nombre_mots de 1 pour tenir compte du dernier mot.
+Incrémenter nombre_mots de 1
+
+Afficher "Longueur de la phrase :", longueur_phrase
+Afficher "Nombre de mots dans la phrase :", nombre_mots
+Afficher "Nombre de voyelles dans la phrase :", nombre_voyelles
+

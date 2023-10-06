@@ -1,0 +1,31 @@
+FONCTION ProduitScalaire(v1, v2)
+    SI LONGUEUR(v1) ≠ LONGUEUR(v2) ALORS
+        RETOURNER None  // Les vecteurs doivent avoir la même dimension
+    FIN SI
+    
+    ps <- 0
+    POUR i DE 1 À LONGUEUR(v1) FAIRE
+        ps <- ps + (v1[i] * v2[i])
+    FIN POUR
+    
+    RETOURNER ps
+FIN FONCTION
+
+ALGORITHME VecteursOrthogonaux(paires_de_vecteurs)
+    POUR CHAQUE paire DANS paires_de_vecteurs FAIRE
+        v1 <- paire[0]
+        v2 <- paire[1]
+        produit_scalaire <- ProduitScalaire(v1, v2)
+        
+        SI produit_scalaire = 0 ALORS
+            AFFICHER "Les vecteurs sont orthogonaux."
+        SINON
+            AFFICHER "Les vecteurs ne sont pas orthogonaux."
+        FIN SI
+    FIN POUR
+FIN ALGORITHME
+
+// Exemple d'utilisation
+paires_de_vecteurs <- [ [ [1, 2, -3], [-2, 1, 1] ], [ [3, -1], [2, 6] ] ]
+VecteursOrthogonaux(paires_de_vecteurs)
+
