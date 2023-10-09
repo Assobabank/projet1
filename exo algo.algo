@@ -1,0 +1,11 @@
+procédure tri_par_insertion(tableau)
+    pour i de 1 à longueur(tableau) - 1 faire
+        élément_courant = tableau[i]
+        j = i - 1
+        tant que j >= 0 et tableau[j] > élément_courant faire
+            tableau[j + 1] = tableau[j]
+            j = j - 1
+        fin tant que
+        tableau[j + 1] = élément_courant
+    fin pour
+fin procédure
