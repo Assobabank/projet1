@@ -1,0 +1,32 @@
+Procédure estPalindrome(mot)
+    mot <- ConvertirEnMinuscules(EliminerEspaces(mot))
+    longueur <- LongueurDuMot(mot)
+    début <- 0
+    fin <- longueur - 1
+
+    Tant que début < fin faire
+        Si mot[fin] ≠ mot[début] alors
+            Renvoyer Faux  # Ce n'est pas un palindrome
+        Fin Si
+        début <- début + 1
+        fin <- fin - 1
+    Fin Tant Que
+
+    Renvoyer Vrai  # C'est un palindrome
+
+Fin Procédure
+
+Fonction ConvertirEnMinuscules(mot)
+    # Convertir toutes les lettres en minuscules
+    # (Implémentation dépendante de la langue et de la plateforme)
+Fin Fonction
+
+Fonction EliminerEspaces(mot)
+    # Supprimer tous les espaces du mot
+    # (Implémentation dépendante de la langue et de la plateforme)
+Fin Fonction
+
+Fonction LongueurDuMot(mot)
+    # Calculer la longueur du mot
+    # (Implémentation dépendante de la langue et de la plateforme)
+Fin Fonction
