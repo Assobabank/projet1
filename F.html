@@ -1,0 +1,46 @@
+function ajouterLigne() {
+    // Obtenez une référence à la tbody du tableau
+    var tbody = document.querySelector(".body");
+
+    // Récupérez les valeurs des champs d'entrée
+    var nouveauNom = document.getElementById("nouveauNom").value;
+    var nouvelleQuantite = document.getElementById("nouvelleQuantite").value;
+
+    // Créez une nouvelle ligne avec les valeurs entrées
+    var nouvelleLigne = document.createElement("tr");
+    nouvelleLigne.innerHTML = `
+        <td class="titre">
+            <div class="write">
+                <span class="bold">${nouveauNom}</span>
+                <span class="red">supprimer</span>
+            </div>
+        </td>
+        <td>
+            <div class="quantity">
+                <button class="munis to"> - </button>
+                <input type="text" id="valeur" class="input" >
+                <button class="plus to"> + </button>
+            </div>
+        </td>
+        <td>
+            <div class="price1">
+                <span>${nouvelleQuantite}fr</span>
+            </div>
+        </td>
+        <td>
+            <div class="price2">
+                <span>${nouvelleQuantite}fr</span>
+            </div>
+        </td>
+    `;
+
+    // Ajoutez la nouvelle ligne à la tbody
+    tbody.appendChild(nouvelleLigne);
+
+    // Réinitialisez les champs d'entrée
+    document.getElementById("nouveauNom").value = "";
+    document.getElementById("nouvelleQuantite").value = "";
+}
+
+// Associez la fonction à l'événement du bouton "Ajouter un article"
+document.getElementById("ajouterLigne").addEventListener("click", ajouterLigne);

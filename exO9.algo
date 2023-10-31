@@ -30,3 +30,20 @@ Fonction LongueurDuMot(mot)
     # Calculer la longueur du mot
     # (Implémentation dépendante de la langue et de la plateforme)
 Fin Fonction
+
+
+<table>
+    <!---first line of table-->
+    <tr>
+        <td>Nom de l'article</td>
+        <td> quantité </td>
+        <td> price unitaire</td>
+        <td>sous total</td>
+
+    </tr> <!--END-->
+<!--second line of table-->
+    <tr>
+        <td>sac de riz</td>
+        
+    </tr>
+</table>

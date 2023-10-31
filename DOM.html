@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ampoule</title>
+  <style>
+    .ampoule {
+      width: 100px;
+      height: 100px;
+      background-color: black;
+      border-radius: 50%;
+      transition: background-color 0.5s;
+    }
+
+    .allume {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="ampoule" class="ampoule"></div>
+  <button id="bouton">Allumer</button>
+
+  <script>
+    // Sélectionnez l'élément de l'ampoule et le bouton
+    const ampoule = document.getElementById("ampoule");
+    const bouton = document.getElementById("bouton");
+
+    // Ajoute un gestionnaire d'événements pour le clic sur le bouton
+    bouton.addEventListener("click", function() {
+      ampoule.classList.toggle("allume"); // Ajoute ou supprime la classe "allume"
+    });
+  </script>
+</body>
+</html>

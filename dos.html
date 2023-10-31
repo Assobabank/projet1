@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Changer la couleur du texte avec classList.toggle</title>
+  <style>
+    body{
+      margin: 0;
+      box-sizing: border-box
+      
+    }
+    .text-red {
+     width: 8% ;
+     height: 100px;
+     border: 1px solid;
+     border-radius: 10rem;
+     background-color: black;
+     
+    }
+
+  
+
+    .text-blue {
+      background-color: red;
+      
+    }
+  </style>
+</head>
+<body>
+   <div id="texte" class="text-red"> </div>
+  <button id="bouton" >Changer la couleur</button>
+
+  <script>
+    // Sélectionnez l'élément du texte et le bouton
+    const texte = document.getElementById("texte");
+    const bouton = document.getElementById("button");
+
+    // Ajoute un gestionnaire d'événements pour le clic sur le bouton
+    bouton.addEventListener("click", function() {
+      texte.classList.toggle("text-blue"); // Ajoute ou supprime la classe text-red
+  
+    });
+  </script>
+</body>
+</html>

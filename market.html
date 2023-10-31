@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="market.css">
+    <style>
+        /* Ajoutez un style pour le conteneur du tableau */
+        .table-container {
+            max-height: 3000px; /* Réglez la hauteur maximale selon vos besoins */
+            overflow-y:auto;
+        }
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <span class="market-name">
+        panier
+    </span>
+    <br><br>
+                <div class="big-div">
+                 
+                    <table class="table">
+                        <thead><tr class="line1">
+                          <th class="titre1">
+                              Nom de l'article
+                          </th>
+                          <th class="titre2">
+                              Quantité
+                          </th>
+                          <th class="titre3">
+                              Price unitaire
+                          </th>
+                          <th class="titre4">
+                              sous total
+                          </th>
+                      </tr>
+                  </thead>
+                  
+                  <tbody class="body ">
+                    <tr class="line2">
+                        <td class="titre">
+                            <div class="write">
+                                <span class="bold">
+                                    sac de riz
+                                </span>
+                                <span class="red">
+                                    supprimer
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="quantity">
+                                <button class="munis to"> - </button>
+                                <input type="text" id="valeur" class="input" value="1">
+                                <button class="plus to"> + </button>
+                            </div>
+                        </td> <td>
+                          <div class="price1">
+                              <span>
+                                  15000fr
+                              </span>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="price2">
+                              <span>
+                                  15000fr
+                              </span>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+            
+              <tfoot class="foot">
+                  <tr class="line3">
+                    <td>
+                    <div class="global">
+                        <input type="text" placeholder="Entrer le nom de l'article" class="input-article" id="nouveauNom">
+                    </div>
+                </td>
+                <td>
+                    <input type="text" class="inputs" id="nouvelleQuantite">
+                </td>
+                <td></td>
+                <td class="td">
+                    <button class="btn" id="ajouterLigne">
+                        Ajouter un article
+                    </button>
+                </td>
+            </tr>
+        </tfoot>
+      
+            </table> 
+                  
+    </div>
+    <div class="last-price">
+        <span class="total">ToTal: </span><span class="color">0 frcfa</span>
+    </div>
+
+    <script>
+      // Fonction pour mettre à jour la quantité, le prix unitaire et le sous-total
+      function mettreAJourLigne(tr) {
+            let quantiteInput = tr.querySelector('.input');
+            let price1 = tr.querySelector('.price1 span');
+            let price2 = tr.querySelector('.price2 span');
+
+            let quantite = parseInt(quantiteInput.value, 10);
+            if (isNaN(quantite)) {
+                quantite = 0;
+            }
+
+            if (quantite < 0) {
+                quantite = 0;
+            }
+
+            quantiteInput.value = quantite;
+            price1.textContent = quantite * 15000 + 'fr';
+            price2.textContent = quantite * 15000 + 'fr';
+
+            mettreAJourTotal();
+        }
+
+        // Fonction pour ajouter une nouvelle ligne au tableau
+        function ajouterLigne() {
+            // Obtenez une référence à la tbody du tableau
+            let tbody = document.querySelector(".body");
+
+            // Créez une nouvelle ligne avec les valeurs entrées
+            let nouvelleLigne = document.createElement("tr");
+            nouvelleLigne.innerHTML = `
+                <td class="titre">
+                    <div class="write">
+                        <span class="bold">${nouveauNom.value}</span>
+                        <span class="red">supprimer</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="munis to"> - </button>
+                        <input type="text" class="input" value="1">
+                        <button class="plus to"> + </button>
+                    </div>
+                </td>
+                <td>
+                    <div class="price1">
+                        <span>${nouvelleQuantite.value * 15000}fr</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="price2">
+                        <span>${nouvelleQuantite.value * 15000}fr</span>
+                    </div>
+                </td>
+            `;
+
+            // Associez la fonction pour mettre à jour la ligne aux boutons + et -
+            let plusButton = nouvelleLigne.querySelector('.plus');
+            let moinsButton = nouvelleLigne.querySelector('.munis');
+
+            plusButton.addEventListener('click', function () {
+                let quantiteInput = nouvelleLigne.querySelector('.input');
+                quantiteInput.value = parseInt(quantiteInput.value, 10) + 1;
+                mettreAJourLigne(nouvelleLigne);
+            });
+
+            moinsButton.addEventListener('click', function () {
+                let quantiteInput = nouvelleLigne.querySelector('.input');
+                quantiteInput.value = parseInt(quantiteInput.value, 10) - 1;
+                mettreAJourLigne(nouvelleLigne);
+            });
+
+            // Ajoutez la nouvelle ligne à la tbody
+            tbody.appendChild(nouvelleLigne);
+
+            // Réinitialisez les champs d'entrée
+            document.getElementById("nouveauNom").value = "";
+            document.getElementById("nouvelleQuantite").value = "";
+        }
+
+        // Fonction pour mettre à jour le total
+        function mettreAJourTotal() {
+            let total = 0;
+            let price2Elements = document.querySelectorAll('.price2 span');
+
+            price2Elements.forEach(function (element) {
+                let prixSousTotal = parseFloat(element.textContent);
+                if (!isNaN(prixSousTotal)) {
+                    total += prixSousTotal;
+                }
+            });
+
+            let totalElement = document.querySelector('.color');
+            totalElement.textContent = total.toFixed(2) + ' fr cfa';
+        }
+
+        // Associez la fonction à l'événement du bouton "Ajouter un article"
+        document.getElementById("ajouterLigne").addEventListener("click", ajouterLigne);
+    </script>
+</body>
+</html>
+
